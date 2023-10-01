@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style> 
+ 
+       .form-control:focus {
+           box-shadow: none;
+           border-color: #82A0D8;
+       }
+            
+       .back:hover {
+           color: #071952;
+           cursor: pointer;
+       }
+       
+       .labels {
+           font-size: 15px;
+       }
+       
+       .add-experience:hover {
+           background: #82A0D8;
+           color: #FFFFFF;
+           cursor: pointer;
+           border: solid 1px #82A0D8;
+       }
+
+       /* Add styles for the login box */
+       .login-box {
+  
+    /* สีพื้นหลังที่คุณต้องการ */
+    border-radius: 10px;
+    box-shadow: 2px 9px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+   </style>
+</head>
+<body>
+    <br> 
+    <div class="container-lg" style="background-color: #FFFFFF;">
+        <div class="container rounded bg-white my-5">
+            <div class="row">
+                <div class= "col-md-5 mx-auto">
+                    <div class="p-3 py-5 login-box">
+                       
+                        <div class="text-center">
+                            <p class="h1" style="color:#191717;">Login</p>	                  
+                        </div>
+                        <br>
+                        <br>
+
+                        <form action="{{ url_for('login') }}" method="POST" id="loginForm">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+                              <label for="floatingInput">Username</label>
+                        </div>       
+                        <div class="form-floating">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                              <label for="floatingPassword">Password</label>
+                        </div>
+                        
+                        {% if msg == "Incorrect" %} <div style="color: red ; font-size: 15px;">*Incorrect username or password.</div> {% endif %}
+                     <!-- <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Remember me
+                            </label>
+                        </div> -->
+                     
+                        <div class="mt-5 text-center">
+                            <button type="submit" value="login" class="btn btn-primary">Log in<span class="fas fa-chevron-right ms-1">
+                        </div>                  
+                        </form>
+                    </div>
+                </div>           
+            </div>
+        </div>
+    </div>
+</body>
+</html>

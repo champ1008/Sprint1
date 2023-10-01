@@ -1,0 +1,335 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/bootstrap.min.css') }}"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script>
+      $(document).ready(function () {
+        $("#theater_list").DataTable();
+      });
+    </script>
+
+    <base target="_parent" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB5-Free_6.3.1/css/mdb.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <style>
+      body {
+        background-color: #fbfbfb;
+      }
+
+      @media (min-width: 991.98px) {
+        main {
+          padding-left: 240px;
+        }
+      }
+
+      /* Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: 58px 0 0;
+        /* Height of navbar */
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+        width: 240px;
+        z-index: 600;
+      }
+
+      @media (max-width: 991.98px) {
+        .sidebar {
+          width: 100%;
+        }
+      }
+
+      .sidebar .active {
+        border-radius: 5px;
+        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+      }
+
+      .sidebar-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 48px);
+        padding-top: 0.5rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+        /* Scrollable contents if viewport is shorter than content. */
+      }
+    </style>
+    <style>
+      INPUT:-webkit-autofill,
+      SELECT:-webkit-autofill,
+      TEXTAREA:-webkit-autofill {
+        animation-name: onautofillstart;
+      }
+
+      INPUT:not(:-webkit-autofill),
+      SELECT:not(:-webkit-autofill),
+      TEXTAREA:not(:-webkit-autofill) {
+        animation-name: onautofillcancel;
+      }
+
+      @keyframes onautofillstart {
+      }
+
+      @keyframes onautofillcancel {
+      }
+    </style>
+  </head>
+
+  <body class="vsc-initialized">
+    <!--Main Navigation-->
+    <header>
+      <!-- Sidebar -->
+      <nav
+        id="sidebarMenu"
+        class="collapse d-lg-block sidebar collapse bg-white"
+      >
+        <div class="position-sticky">
+          <div class="list-group list-group-flush mx-3 mt-4">
+            <a
+              href="{{url_for('dashboard')}}"
+              class="list-group-item list-group-item-action py-2 ripple"  
+              aria-current="true"
+            >
+              
+              <i class="bi bi-bar-chart-fill fa-fw me-3"></i
+              ><span>Dashboard</span>
+            </a>
+            <a
+              href="{{url_for('orders')}}"
+              class="list-group-item list-group-item-action py-2 ripple"
+            >
+              <i class="bi bi-calendar-week-fill fa-fw me-3"></i><span>Orders</span>
+            </a>
+            <a
+            href="{{url_for('product')}}"
+              class="list-group-item list-group-item-action py-2 ripple"
+              ><i class="bi bi-ticket-perforated-fill fa-fw me-3"></i><span>Product</span></a
+            >
+            <a
+            href="{{url_for('stock_report')}}"
+              class="list-group-item list-group-item-action py-2 ripple"
+              ><i class="bi bi-person-fill fa-fw me-3"></i><span>Stock Report</span></a
+            >
+            <a
+            href="{{url_for('staff')}}"
+              class="list-group-item list-group-item-action py-2 ripple"
+              ><i class="bi bi-tv-fill fa-fw me-3"></i><span>Staff</span></a
+            >
+            
+          </div>
+        </div>
+      </nav>
+      <!-- Sidebar -->
+
+      <!-- Navbar -->
+      <nav
+        id="main-navbar"
+        class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+      >
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#sidebarMenu"
+            aria-controls="sidebarMenu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Brand -->
+          <a class="navbar-brand" href="/staff/dashboard/today">
+            <img
+            src="/static/img/Logo/logonav.png"
+              height="25"
+              alt=""
+              loading="lazy"
+            />
+          </a>
+
+          <ul class="navbar-nav ml-auto">
+            <!-- Avatar -->
+            <li class="nav-item dropdown ml-auto">
+              <a
+                class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                  class="rounded-circle"
+                  height="22"
+                  alt=""
+                  loading="lazy"
+                />
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+         
+
+                <li><a class="dropdown-item" >{{Username}}</a></li>
+                <li><a class="dropdown-item" >{{Position}} </a></li>
+                <li><a class="dropdown-item" href="{{url_for('profile')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{url_for('logout')}}">Logout</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+        <div class="container">
+
+          <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div class="card flex-fill">
+                    <div class="card-header">
+                  
+                      <h5 class="card-title mb-0">Orders list</h5>
+                    </div>
+                    <table class="table table-hover my-0">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th class="d-none d-xl-table-cell">Date</th>
+                          <th class="d-none d-xl-table-cell">Price</th>
+                          <th class="d-none d-md-table-cell"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">001</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$64</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">002</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$145</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">003</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$96</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">004</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$114</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">005</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$115</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                        <tr>
+                          <td class="d-none d-xl-table-cell">006</td>
+                          <td class="d-none d-xl-table-cell">01/01/2023</td>
+                          <td class="d-none d-xl-table-cell">$55</td>
+                          <td><a class="btn btn-info btn-sm" href="">View</a><a class="btn btn-danger btn-sm" href="">Edit</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © Bigdeal 270</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Free_6.3.1/js/mdb.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    ></script>
+
+    
+  </body>
+</html>
